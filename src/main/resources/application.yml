@@ -1,0 +1,7 @@
+info:
+  app:
+    name: hystrix-dashboard
+    description: Graphical view of Hystrix streams
+
+server:
+  port: 7979
