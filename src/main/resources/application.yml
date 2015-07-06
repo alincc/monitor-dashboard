@@ -5,3 +5,10 @@ info:
 
 server:
   port: 7979
+  
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
