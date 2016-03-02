@@ -12,11 +12,9 @@
     <description>Graphical view of Hystrix streams</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.2.RELEASE</version>
-        <relativePath/>
-        <!-- lookup parent from repository -->
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+        <version>Angel.SR6</version>
     </parent>
 
     <properties>
@@ -26,18 +24,6 @@
         <docker.registry>registry.nb.no:5000</docker.registry>
         <docker.image.prefix>nb</docker.image.prefix>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-parent</artifactId>
-                <version>1.0.0.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -94,11 +80,11 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.4.0</version>
+                <version>0.4.1</version>
                 <configuration>
                     <imageName>${docker.registry}/${docker.image.prefix}/${project.artifactId}</imageName>
                     <baseImage>java:8-jre</baseImage>
-                    <entryPoint>java $JAVA_OPTS $OTHER_OPTS -Dspring.profiles.active=docker -jar /${project.build.finalName}.jar</entryPoint>
+                    <entryPoint>java $JAVA_OPTS $OTHER_OPTS -jar /${project.build.finalName}.jar</entryPoint>
                     <imageTags>
                         <imageTag>${project.version}</imageTag>
                         <imageTag>latest</imageTag>
